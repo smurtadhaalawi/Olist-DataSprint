@@ -60,26 +60,41 @@ By adding price
 Looks at sales volume, repeat purchases, category competitiveness, and growth potential.
 Helps identify sellers capable of scaling sustainably.
 
+<pre><code>IF [Revenue for each Seller] >= { FIXED : PERCENTILE([Revenue for each Seller], 0.75) } THEN
+    "High Revenue"
+ELSEIF [Revenue for each Seller] >= { FIXED : PERCENTILE([Revenue for each Seller], 0.25) } THEN
+    "Medium Revenue"
+ELSE
+    "Low Revenue"
+END</code></pre>
+
 
 ### 5. Pricing Competitiveness
 Compares reseller and manufacturer prices, category averages, and historical pricing behavior.
 Detects overpricing, underpricing, and erratic pricing that may harm marketplace balance.
 
-## Approches
+## Approaches
+
 1. How do sellers perform in terms of revenue, delivery, and review Performance?
 2. Who are the most successful sellers?
 3. Who are the red-flag (underperforming) sellers?
 4.	Are employees hiring/selecting the right sellers?
 5.	How do sellers compare across business types?
 6.	How do resellers perform compared to manufacturers in terms of revenue, delivery, and review Performance?
-7.	Are resellers more expensive than manufacturers?
-8.	Are resellers the most successful sellers?
-9.	What is the price gap between resellers and manufacturers?
+7.	Are resellers the most successful sellers?
+8.	What is the price gap between resellers and manufacturers?
 
 ## Recommendation 
+-
+-
+-
+-
 
 ## Limitation 
-
+- The dataset covers 2016–2018, so it may not reflect very recent seller behavior.
+- Seller type data (manufacturer vs. reseller) appears only in the 2018 Closing Deals file with 825 seller IDs, while the main seller table contains around 3,000 sellers. Therefore, we built our analysis using the full seller table and treated the 825 sellers as a representative sample.
+- 
+- 
 
 ## Reference:
 The Data taken from Kaggle:

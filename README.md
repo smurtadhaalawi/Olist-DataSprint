@@ -55,10 +55,8 @@ ELSEIF [Delay] = 0 THEN "On Time"
 ELSE "Early"
 END</code></pre>
 
-### 4. Revenue Performance
-By adding price 
-Looks at sales volume, repeat purchases, category competitiveness, and growth potential.
-Helps identify sellers capable of scaling sustainably.
+### 4. Revenue, and price Performance
+Compares reseller and manufacturer prices, category averages, and historical pricing behavior.
 
 <pre><code>IF [Revenue for each Seller] >= { FIXED : PERCENTILE([Revenue for each Seller], 0.75) } THEN
     "High Revenue"
@@ -68,14 +66,17 @@ ELSE
     "Low Revenue"
 END</code></pre>
 
+This calculates how many months have passed since the seller’s last order until Dec 31, 2018:
 
-### 5. Pricing Competitiveness
-Compares reseller and manufacturer prices, category averages, and historical pricing behavior.
-Detects overpricing, underpricing, and erratic pricing that may harm marketplace balance.
+<pre><code>IF DATEDIFF('month', [Last Order Date ], DATE("2018-12-31")) > 3 THEN
+    "Underperforming"
+ELSE
+    "Active"
+END</code></pre>
 
 ## Approaches
 
-1. How do sellers perform in terms of revenue, delivery, and review Performance?
+1. How do sellers perform in terms of revenue, delivery, product descriptions, and review Performance?
 2. Who are the most successful sellers?
 3. Who are the red-flag (underperforming) sellers?
 4.	Are employees hiring/selecting the right sellers?
@@ -85,16 +86,21 @@ Detects overpricing, underpricing, and erratic pricing that may harm marketplace
 8.	What is the price gap between resellers and manufacturers?
 
 ## Recommendation 
--
--
--
--
+- Evaluate every seller using a unified scoring model based on: Delivery accuracy, Product description completeness, Review performance, and Revenue consistency
+- Prioritize High-Performing Sellers:High average review scores, Low late-delivery rates, Accurate product descriptions.
+- Strengthen Verification for Low-Scoring Sellers:Require additional documentation, Conduct manual checks, Delay approval until key issues are resolved.
+- Provide Training & Guidelines for Product Quality:Teach sellers how to write clear product descriptions, Standardize product image requirements, and Educate sellers on delivery expectations.
+- Introduce Continuous Monitoring: Late delivery rates, Cancelled orders, Customer complaint patterns, Changes in monthly performance.
+- Improve Employee Selection Decisions with Data: Giving staff access to the seller-scoring dashboard to Reduce subjective or manual decisions.
+- Prioritize onboarding sellers with strong sales potential.
+- Support resellers after 6 months to stay active.
+- Reward employees for quality sellers, not quantity.
 
 ## Limitation 
 - The dataset covers 2016–2018, so it may not reflect very recent seller behavior.
 - Seller type data (manufacturer vs. reseller) appears only in the 2018 Closing Deals file with 825 seller IDs, while the main seller table contains around 3,000 sellers. Therefore, we built our analysis using the full seller table and treated the 825 sellers as a representative sample.
-- 
-- 
+- Revenue Does Not Reflect Profitability
+- Delivery Data Missing External Factors
 
 ## Reference:
 The Data taken from Kaggle:
